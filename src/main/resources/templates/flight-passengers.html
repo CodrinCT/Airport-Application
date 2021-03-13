@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body style="background-color: #202020">
+<div class="page-header">
+    <th>
+        <a href="/logout" class="btn btn-primary">Logout</a>
+        <a href="/flightslist" class="btn btn-primary">Back to Flight List</a>
+    </th>
+    <div class="pull-left">
+        <div>Welcome <span th:text="${session.admin}"></span></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th style=" color:white; font-size:35px; vertical-align:middle;">Passenger Id</th>
+        <th style=" color:white; font-size:35px; vertical-align:middle;">Ticket Id</th>
+        <th style=" color:white; font-size:35px; vertical-align:middle;">Passenger Name</th>
+        <th style=" color:white; font-size:35px; vertical-align:middle;">Passenger Flight Id</th>
+        <th style=" color:white; font-size:35px; vertical-align:middle;">Actions</th>
+    </tr>
+        <tr th:each="passenger : ${passenger}">
+            <td style="color:white; font-size:25px;padding-left:20px" th:text="${passenger.passengerId}"></td>
+            <td style="color:white; font-size:25px;padding-left:20px" th:text="${passenger.ticketId}"></td>
+            <td style="color:white; font-size:25px;padding-left:20px" th:text="${passenger.passengerName}"></td>
+            <td style="color:white; font-size:25px;padding-left:20px" th:text="${passenger.passengerFlightId}"></td>
+            <td style="color:white; font-size:25px;padding-left:20px"><a th:href="@{/cancel/{ticketId}(ticketId=${passenger.ticketId})}" class="btn btn-info">Cancel</a></td>
+        </tr>
+</table>
+</body>
+</html>

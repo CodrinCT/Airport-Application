@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8"/>
+    <title>Home Page</title>
+    <link
+            th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap}"
+            rel="stylesheet"
+    />
+        <link th:href="@{/style/home-style.css}" href="../style/home-style.css" type="text/css" rel="stylesheet"/>
+        <link th:href="@{/style/login-form.css}" href="../style/login-form.css" type="text/css" rel="stylesheet"/>
+    <script
+            src="https://kit.fontawesome.com/865c67cef5.js"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<div class="box-area">
+    <header>
+        <div class="wrapper" id="top-bar">
+            <div class="logo">
+                <i id="plane-icon" class="fas fa-plane"></i>
+                <a href="/home.html">Romanian Flying</a>
+            </div>
+            <nav class="info-links">
+                <a href="#about-me">about</a>
+                <a href="#" onclick="togglePopupLogin()">login</a>
+                <a href="#contact-info">contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="banner-area">
+        <p id="login-link" onclick="togglePopupLogin()">Fly With Us</p>
+    </div>
+    <div class="popup" id="popup-1">
+        <div class="content">
+            <div class="close-btn" onclick="togglePopupLogin()">X</div>
+            <h1>Sign in</h1>
+            <form action="/loginpage" method="post" >
+                <div class="input-field">
+                    <label for="user" style="color: #c9a959af">User Name</label>
+                    <input type="text" value="" name="userName" class="validate" id="user" placeholder="name"/>
+                </div>
+                <div class="input-field">
+                    <label for="password" style="color: #c9a959af">Password</label>
+                    <input type="password" value="" class="validate" name="password" id="password"
+                           placeholder="password"/>
+                </div>
+<!--                <div class="input-field">-->
+<!--                    <label for="remember-me" style="color: #c9a959af">Remember Me</label>-->
+<!--                    <input type="checkbox" value="" class="validate" name="remember-me" id="remember-me"/>-->
+<!--                </div>-->
+                <button class="second-button" type="submit">Sign in</button>
+            </form>
+            <p>Don't have an account?
+            <p id="registerlink" style="top:0px"><a href="/registration">Register</a> </p>
+        </div>
+    </div>
+    <div class="content-area">
+        <div class="information">
+            <div class="about-me-group">
+                <div class="about-me" id="about-me">
+                    <h2>About Us</h2>
+                    <p id="about-me-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Accusamus pariatur odio repudiandae voluptatem? Voluptates
+                        quibusdam, dignissimos repudiandae temporibus mollitia dolorem.
+                        Eveniet suscipit distinctio commodi consequuntur illo harum
+                        veniam nemo repellat natus ea possimus, qui sit! Voluptatibus
+                        sint, illo natus iure, sapiente porro quas, non enim libero vel
+                        esse blanditiis est! Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Illum, quaerat a fugit officia amet sequi
+                        tempore natus laudantium aspernatur veritatis non autem facere
+                        vel blanditiis mollitia iusto laboriosam assumenda? Dolore.
+                    </p>
+                </div>
+                <div id="slider">
+                    <figure>
+                        <img src="../images/chris-blake-TwGfUx5mixw-unsplash.jpg" alt=""/>
+                        <img src="../images/huiii-niF-wsIkMi4-unsplash.jpg"/>
+                        <img src="../images/jairo-Tm8jYlczTIg-unsplash.jpg" alt=""/>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="contact-info" id="contact-info">
+                <form method="post" action="/feedback">
+                    <h2 style="padding-top: 5px">Contact Us</h2>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                                type="text"
+                                placeholder="John Doe"
+                                id="name"
+                                name="name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                                type="email"
+                                placeholder="ex:Smith@yahoo.com"
+                                id="email"
+                                name="email"
+                        />
+                    </div>
+                    <div class="form-group" id="text-area-group">
+                        <label for="feedback">Message</label>
+                        <textarea
+                                name="feedback"
+                                id="feedback"
+                                cols="50"
+                                rows="15"
+                        ></textarea>
+                    </div>
+                    <button type="submit" id="email-button">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function togglePopupLogin() {
+        document.getElementById("popup-1").classList.toggle("active");
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

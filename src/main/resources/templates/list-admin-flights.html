@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Flights List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body style= "background-color: #202020">
+<div class="page-header">
+    <th>
+        <a href="/logout" class="btn btn-primary" style="color: darkred; font-size: large; font-weight:bold">Logout</a>
+    </th>
+    <div class="pull-left">
+        <div style="color: white; font-size: large">Welcome <span th:text="${session.admin}"></span></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<table class="table table-striped">
+
+    <ul>
+        <form action="/flightslist" method="POST">
+            <p style="font-size:35px; font-weight:bold; color:white">Search Flight</p>
+            <th><input type="text" class="form-control" id="origin" name="origin" value="" placeholder="origin"></th>
+            <th><input type="text" class="form-control" id="destination" name="destination" value="" placeholder="destination"></th>
+            <th><button type="submit" style="margin-left:10px; background-color:blue; width: 80px; height: 35px; align-self: center; color: #d3be6c">Search</button></th>
+        </form>
+    </ul>
+    <tr>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Flight Id</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Origin</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Destination</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Time of Departure</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Time of Arrival</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Time Until Arrival</th>
+        <th style="color:white; font-size:30px; vertical-align:middle;">Actions</th>
+    <tr th:each ="flight : ${flights}" >
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.id}"></span> </td>
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.origin}"></span> </td>
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.destination}"></span></td>
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.timeOfDeparture}"></span></td>
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.timeOfArrival}"></span></td>
+        <td style="color:white; font-size:20x;padding-left:20px"><span th:text="${flight.timeUntilArrival}"></span></td>
+
+        <td>
+            <a th:href="@{/flightslist/information/{id}(id=${flight.id})}"  class="btn btn-info" style="color: orange; margin-bottom: 5px">View Flight Information</a>
+<!--            <a th:href="@{/flightslist/tickets/{id}(id=${flight.id})}" class="btn btn-info" style="color: orange; margin-bottom: 5px">Buy Tickets!</a>-->
+            <a th:href="@{/passengers/{id}(id=${flight.id})}" class="btn btn-info" style="color: orange; margin-bottom: 5px">See Passengers</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

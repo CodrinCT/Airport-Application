@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flights List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body style="background-color: #202020">
+<div class="page-header">
+    <div class="pull-left">
+        <a href="/logout" class="btn btn-primary">Logout</a>
+        <th> <div style="color: white; font-size: large">Welcome <span th:text="${session.admin}" th:text="${session.logged_user}}"></span></div></th>
+        <th>
+            <a href="/flightslist" class = "btn btn-primary">Back to Flight List</a>
+        </th>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th style="color:white; font-size:35px; vertical-align:middle;">Flight id</th>
+        <th style="color:white; font-size:35px; vertical-align:middle;">Class</th>
+        <th style="color:white; font-size:35px; vertical-align:middle;">Number Of Sits</th>
+        <th style="color:white; font-size:35px; vertical-align:middle;">Available Sits</th>
+    </tr>
+    <tr>
+        <td style="color:white; font-size:25px;padding-left:20px" th:text = "${info.id}"></td>
+        <td style="color:white; font-size:25px;padding-left:20px" th:text = "${info.planeClass}"></td>
+        <td style="color:white; font-size:25px;padding-left:20px" th:text = "${info.nrOfSits}"></td>
+        <td style="color:white; font-size:25px;padding-left:20px" th:text = "${info.availableSits}"></td>
+        <td>
+    </tr>
+</table>
+</body>
+</html>
